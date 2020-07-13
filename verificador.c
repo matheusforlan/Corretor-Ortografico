@@ -156,38 +156,28 @@ char *corrigePalavra(char *palavra, char **palavras, int nPalavras){
             alterado = 1;
         }
     }
-    int opcao;
-    printf("\n \n A palavra %s pode estar escrita incorretamente, as opcoes de substituicaoo sao: \n 1.%s \n 2.%s \n 3.%s \n",
-            palavra, palavras[pos1], palavras[pos2], palavras[pos3]);
-    printf("\n Digite o numero da palavra a ser usada ou 0 para permanecer com a palavra %s: ",palavra);
-    scanf("%d", &opcao);
     
-    while(0 == 0){
-
-         if(opcao == 1){                 // se escolher 1, escolhe a primeira palavra sugerida
-            return palavras[pos1];
-
-    } 
-        else if(opcao ==2){              // se escolher 2, escolhe a segunda palavra sugerida
-            return palavras[pos2];
-    }
-        else if(opcao == 3){           // se ecolher 3, escolhe a terceira palavra sugerida
-            return  palavras[pos3];
-        }
-
-        else if(opcao == 0){
-         return palavra;               // se não, retorna ela original(Tem que ser dentro de um loop p forçar
-                                    // o usuário a digirar o número 0.)
-    } 
-
-        printf("\n \n A palavra %s pode estar escrita incorretamente, as opcoes de substituicaoo sao: \n 1.%s \n 2.%s \n 3.%s \n",
-            palavra, palavras[pos1], palavras[pos2], palavras[pos3]);
-        printf("\n Digite somente o numero da palavra a ser usada ou 0 para permanecer com a palavra %s: ",palavra);
-        scanf("%d", &opcao);
-    }
-   
+int opcao;
+   do { //esse loop pelo menos uma vez antes de verificar a condição do while
+   printf("\n \n A palavra %s pode estar escrita incorretamente, as opcoes de substituicao sao: \n 1.%s \n 2.%s \n 3.%s \n", palavra, palavras[pos1], palavras[pos2], palavras[pos3]);
+   printf("\n Digite o numero da palavra a ser usada ou 0 para permanecer com a palavra %s: ",palavra);
+   scanf("%d", &opcao);
   
+       if(opcao == 1){                    //se escolher 1, escolhe a primeira palavra sugerida
+           return palavras[pos1];
+       }
+       else if(opcao ==2){                 //se escolher 2, escolhe a segunda palavra sugerida
+           return palavras[pos2];
+       }
+       else if(opcao == 3){                //se ecolher 3, escolhe a terceira palavra sugerida
+           return  palavras[pos3];
+       }
+       else if(opcao == 0) {               //se não, retorna ela original(Tem que ser dentro de um loop p forçar
+           return palavra;                 //o usuário a digitar o número 0.)
+       }
+   } while(0 == 0);
 }
+
 
 //Código que retorna a distância de levenshtein.
 int levenshtein(const char *s, const char *t)
